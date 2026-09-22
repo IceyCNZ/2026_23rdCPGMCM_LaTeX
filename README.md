@@ -119,6 +119,6 @@ xelatex -interaction=nonstopmode -halt-on-error main.tex
 
 ## 字体与提交
 
-项目随附本机已有的宋体、黑体、隶书和 Times New Roman 文件，以避免跨平台时静默回退为其他字体。
+项目随附宋体、黑体、隶书和 Times New Roman 字体文件，以避免跨平台时静默回退为其他字体。
 
 提交前务必替换题目、摘要、正文、图表和示例参考文献，填写官方封面，核对摘要篇幅，并检查封面以外的正文、图片、代码和 PDF 属性中是否含有身份信息。
