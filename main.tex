@@ -1,0 +1,238 @@
+% !TeX program = xelatex
+% !BIB program = bibtex
+% !TeX encoding = UTF-8
+\documentclass{gmcmthesis}
+
+% 宏包在 settings/packages.tex 中增删；字体与版式分别在 fonts.tex、format.tex 中管理。
+
+% 题目如果不想加横线，直接使用 \title{题目} 即可
+\title{\underline{\makebox[300bp][c]{研究生数学建模竞赛论文题目}}} 
+\keywords{数学建模；模型检验；灵敏度分析}
+
+\begin{document}
+
+% 将填写好的官方封面导出为单页 PDF，替换 cover/cover.pdf。
+\makecover
+\maketitle
+
+% 摘要支持自然跨页；一般不超过两页。
+\begin{abstract}
+本文围绕题目所描述的实际问题，按照问题分析、模型建立、模型求解和结果检验的顺序组织研究。首先梳理已知条件与待求目标，明确数据的来源、变量的含义以及模型的适用范围；随后根据问题的约束关系选择数学方法，建立能够解释实际现象的模型。
+
+\textbf{针对问题一}，说明数据预处理方法、主要假设和基础模型，给出模型的核心表达式及其求解思路。摘要中的结果应与正文对应，采用明确的数值、单位或结论描述，避免仅列出采用了哪些算法。
+
+针对问题二，说明在基础模型上增加的约束条件、改进方法与求解过程，并通过对照实验或理论分析说明改进的作用。若涉及多个评价指标，应交代主要指标的含义以及不同方案之间的比较结论。
+
+针对问题三，说明不确定因素对模型的影响，概括模型检验、误差分析和灵敏度分析的方法。结合检验结果，说明结论的稳定性和适用条件，并指出模型在实际应用中需要注意的边界。
+
+最后，总结所建模型的主要结论与创新点，说明模型的优势、局限以及进一步推广的方向。本示例不包含实际竞赛数据或实验结论，正式论文应以实际计算和分析结果替换上述文字。
+\end{abstract}
+
+% 目录自动收录三级标题；摘要、目录、正文的阿拉伯页码连续。
+\tableofcontents
+
+% 一级标题使用 \section，二级使用 \subsection，三级使用 \subsubsection。
+% 默认一级标题另起一页。如需连续排版，将 format.tex 中 break 改为 {}。
+\section{问题重述}
+\label{sec:problem}
+
+\subsection{问题背景}
+在此介绍问题的实际背景、研究对象与研究意义。背景叙述应围绕题目提供的信息展开，说明为什么需要建立数学模型，以及模型需要解决哪些关键问题。
+
+中英混排测试。中英之间会在PDF里自动加空格，但是为了tex的可读性，建议在 tex 代码中也添加空格。英文字体能正常使用 Times New Roman。
+
+根据实际问题的特点，先确定输入数据、输出结果及二者之间的联系，再划分研究范围。对于题目没有明确给出的条件，应通过合理假设加以说明，并在后续分析中讨论这些假设对结果的影响。
+
+\subsection{问题描述}
+在不改变题意的前提下，将题目要求转化为可以求解的数学任务。对每一问分别给出目标、已知条件和需要提交的结果，避免简单重复大段原题文字。
+
+\begin{enumerate}
+  \item 问题一：确定主要变量与评价指标，建立基础数学模型并给出求解方法。
+  \item 问题二：结合新的条件或约束改进模型，对不同方案进行比较分析。
+  \item 问题三：考虑误差或不确定性，对模型进行检验并分析适用范围。
+\end{enumerate}
+
+\subsection{总体思路}
+本文的建模过程如\Cref{fig:workflow} 所示。各环节之间应保持可追溯的关系：模型中的变量对应实际数据，算法求解对应明确的目标函数，结果分析对应题目提出的具体问题。
+
+% 插图放在 figures 中；推荐 PDF 矢量图，也支持 PNG、JPG。
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{figures/workflow.pdf}
+  \caption{建模流程示意图}
+  \label{fig:workflow}
+\end{figure}
+
+\section{模型假设}
+
+为将实际问题转化为可求解的数学模型，作出以下假设。每条假设应有题意、数据或实际背景作为依据，并在模型检验部分讨论其合理性。
+
+\begin{enumerate}
+  \item 假设题目提供的数据能够反映所研究对象的主要特征，异常值与缺失值已按明确规则处理。
+  \item 假设研究时段内影响模型的主要参数保持稳定，未显式考虑的因素作为误差或扰动处理。
+  \item 假设决策变量满足题目给定的边界条件，且至少存在一组可行解。
+\end{enumerate}
+
+正式论文中应删除不适用的假设，补充必要的物理、统计或管理学依据。假设的数量不宜机械固定，应以能够支撑模型且不掩盖问题实质为准。
+
+\section{符号说明}
+
+主要符号如\Cref{tab:symbols} 所示。同一符号在全文中保持相同含义；带量纲的变量应注明单位，局部使用的符号也可以在首次出现的位置解释。
+
+% longtable 支持跨页；不需要跨页时也可以使用 table 与 tabularx。
+\begin{longtable}{>{$}l<{$}p{0.64\linewidth}c}
+  \caption{主要符号及其含义}
+  \label{tab:symbols}\\
+  \toprule
+  \multicolumn{1}{l}{符号} & 含义 & 单位\\
+  \midrule
+  \endfirsthead
+  \multicolumn{3}{c}{表~\thetable\quad 主要符号及其含义（续）}\\
+  \toprule
+  \multicolumn{1}{l}{符号} & 含义 & 单位\\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  n & 决策变量的个数 & 无量纲\\
+  x_i & 第 $i$ 个决策变量 & 依题意确定\\
+  a_i & 第 $i$ 个目标值 & 依题意确定\\
+  w_i & 第 $i$ 项的权重，且 $w_i>0$ & 无量纲\\
+  b & 决策变量总量的上界 & 依题意确定\\
+  F(\bm{x}) & 目标函数 & 依题意确定\\
+  \varepsilon & 数值求解的收敛阈值 & 无量纲\\
+\end{longtable}
+
+\section{模型的建立与求解}
+\label{sec:model}
+
+\subsection{问题一的模型建立}
+
+\subsubsection{变量定义与数据处理}
+根据题意确定决策变量 $\bm{x}=(x_1,x_2,\ldots,x_n)^{\mathsf T}$，并对输入数据进行统一处理。数据预处理的规则应在建模前确定，以保证不同方法的比较使用相同的数据基础。
+
+文献引用使用方括号编号，例如书籍中的相关方法可写为文献~\cite[第10--20页]{demo-book}。此处文献条目为明确标记的占位示例，正式使用时必须替换为真实来源与实际引用页码。
+
+\subsubsection{目标函数与约束条件}
+为演示公式排版，考虑带总量约束的加权平方偏差模型：
+\begin{equation}
+  \begin{aligned}
+    \min_{\bm{x}}\quad
+      &F(\bm{x})=\sum_{i=1}^{n}w_i(x_i-a_i)^2,\\
+    \text{s.t.}\quad
+      &\sum_{i=1}^{n}x_i\le b,\\
+      &x_i\ge 0,\qquad i=1,2,\ldots,n.
+  \end{aligned}
+  \label{eq:model}
+\end{equation}
+\Cref{eq:model} 中，$w_i$ 用于描述不同偏差项的相对重要性。正式建模时应解释目标函数的实际意义，以及各项约束与原问题之间的对应关系。
+
+\subsubsection{模型性质}
+当各权重均为正时，目标函数的 Hessian 矩阵为
+\begin{equation}
+  \nabla^2F(\bm{x})
+  =2\operatorname{diag}(w_1,w_2,\ldots,w_n).
+  \label{eq:hessian}
+\end{equation}
+由\Cref{eq:hessian} 可知目标函数严格凸。在约束集合非空的条件下，结合可行域的结构，可以进一步分析最优解的存在性与唯一性。类似论证可以结合期刊文献中的方法展开~\cite{demo-article}。
+
+\subsection{问题一的模型求解}
+
+\subsubsection{求解步骤}
+根据模型结构选择适当的数值算法，说明初始条件、参数设置与停止准则。对于调用的软件或已有程序，应明确版本、来源和关键设置，而不能只给出软件名称。
+
+\begin{enumerate}
+  \item 输入处理后的数据，检查维度、取值范围及约束条件。
+  \item 按照模型结构构造目标函数与约束表达式，设置求解参数。
+  \item 运行算法，检查收敛情况、可行性和目标函数值。
+  \item 保存求解结果，并根据题目要求整理表格、图形与结论。
+\end{enumerate}
+
+\subsubsection{求解结果的表达}
+结果表应同时给出指标名称、单位与比较基准。\Cref{tab:results} 仅展示三线表格式，不包含实际计算结果。网络资源也应在正文中引用~\cite{demo-online}。
+
+\begin{table}[htbp]
+  \centering
+  \caption{不同方案的结果比较（待填入真实计算结果）}
+  \label{tab:results}
+  \begin{tabularx}{0.88\linewidth}{@{}Xccc@{}}
+    \toprule
+    方案 & 目标函数值 & 最大约束违反量 & 计算时间/s\\
+    \midrule
+    基准方案 & 待填 & 待填 & 待填\\
+    改进方案 & 待填 & 待填 & 待填\\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{后续问题的模型扩展}
+
+\subsubsection{新增条件的处理}
+当后续问题改变输入条件、约束或目标时，应明确说明与基础模型的联系，避免对相同部分反复展开。可通过增加决策变量、调整目标函数或引入新的约束来描述变化。
+
+\subsubsection{结果比较与解释}
+比较模型在不同情形下的表现，解释结果差异的原因。多篇文献可一并引用~\cite{demo-book,demo-article}，参考文献列表仍按其在正文中首次出现的顺序排列。
+
+\section{模型检验与灵敏度分析}
+
+\subsection{模型检验}
+将模型输出与已知结果、保留数据或基准方法进行比较，检查结果是否满足实际约束。若采用误差指标，应写清定义、计算范围和比较方式，避免仅凭图形相似就认定模型有效。
+
+以观测值 $y_i$ 和预测值 $\hat y_i$ 为例，均方根误差可写为
+\begin{equation}
+  \operatorname{RMSE}
+  =\sqrt{\frac{1}{m}\sum_{i=1}^{m}(y_i-\hat y_i)^2}.
+\end{equation}
+误差分析应结合问题的量纲与实际需求解释，必要时分别讨论总体误差和局部误差。
+
+\subsection{灵敏度分析}
+选择对结论可能有显著影响的参数，在合理区间内逐一改变或联合扰动，观察目标函数、决策变量及约束满足情况的变化。
+
+\subsubsection{参数扰动方案}
+说明扰动范围、采样方式以及其他参数是否保持不变。若参数由数据估计得到，扰动幅度应尽量与估计误差或实际变化范围相一致。
+
+\subsubsection{稳健性讨论}
+结合扰动结果讨论模型结论是否稳定，指出敏感参数以及需要提高测量精度的环节。出现不稳定现象时，应分析其来自数据、模型结构还是求解算法。
+
+\section{模型评价与推广}
+
+\subsection{模型的优点}
+结合建模过程与检验结果说明模型的优势，例如变量含义清晰、约束表达完整、求解效率适用或结论具有可解释性。每项优点都应有相应依据。
+
+\subsection{模型的局限}
+说明假设简化、数据质量、参数估计以及算法近似带来的限制。局限应对应实际存在的问题，并尽量给出其可能影响结论的方向。
+
+\subsection{模型的推广}
+说明模型可迁移到哪些相近问题、迁移时需要调整哪些条件，以及哪些结论不能直接推广。推广部分应与已有模型保持联系，避免脱离已完成的分析。
+
+% ref.bib 中的条目按正文首次引用的顺序输出
+\bibliographystyle{settings/gmcm}
+\bibliography{ref}
+
+% \appendix 自动生成带中文编号的“附录”一级标题；其下继续使用 \subsection。
+\appendix
+
+\subsection{补充材料}
+在此放置正文不宜展开的推导、完整结果表、数据处理规则与必要的补充说明。引用的程序或数据应注明来源，自行编写的程序应能够与正文的计算过程对应。
+
+\subsection{程序示例}
+下列 Python 代码仅用于演示代码排版与目标函数计算，不是完整求解器。实际提交时应替换为能够复现论文结果的程序。
+
+% 较长程序可使用 \lstinputlisting[language=Python]{程序文件路径}。
+\begin{lstlisting}[language=Python]
+def objective(x, targets, weights):
+    if not (len(x) == len(targets) == len(weights)):
+        raise ValueError("Input lengths must match.")
+    if any(weight <= 0 for weight in weights):
+        raise ValueError("Weights must be positive.")
+    return sum(
+        weight * (value - target) ** 2
+        for value, target, weight in zip(x, targets, weights)
+    )
+
+
+value = objective([1.0, 2.0], [1.5, 2.5], [1.0, 2.0])
+print(value)
+\end{lstlisting}
+
+\end{document}

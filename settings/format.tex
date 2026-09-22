@@ -1,0 +1,135 @@
+\ExplSyntaxOn
+\geometry{
+  paperwidth=595.32bp,
+  paperheight=841.92bp,
+  left=63.84bp,
+  right=63.84bp,
+  top=85.10bp,
+  bottom=51.60bp,
+  includefoot,
+  headheight=0pt,
+  headsep=0pt,
+  footskip=21bp
+}
+\renewcommand{\baselinestretch}{1}
+\renewcommand{\normalsize}{
+  \fontsize{12bp}{15.6bp}\selectfont
+  \setlength{\abovedisplayskip}{7.8bp}
+  \setlength{\belowdisplayskip}{7.8bp}
+  \setlength{\abovedisplayshortskip}{3.9bp}
+  \setlength{\belowdisplayshortskip}{7.8bp}
+}
+\normalsize
+\setlength{\parindent}{24bp}
+\setlength{\parskip}{0pt}
+\setlength{\topskip}{20.72bp}
+\setlength{\emergencystretch}{1em}
+\raggedbottom
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\normalfont\fontsize{9bp}{9bp}\selectfont\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{plain}
+\ctexset{
+  section={
+    name={,、},
+    number=\chinese{section},
+    format=\centering\normalfont\heiti\fontsize{14bp}{18.2bp}\selectfont,
+    aftername={},
+    indent=0pt,
+    break=\clearpage,
+    beforeskip=0pt,
+    afterskip=7bp,
+    afterindent=true
+  },
+  subsection={
+    name={},
+    number=\arabic{section}.\arabic{subsection},
+    format=\normalfont\songti\bfseries\normalsize,
+    aftername=\hspace{6bp},
+    indent=0pt,
+    beforeskip=7.8bp,
+    afterskip=0pt,
+    afterindent=true
+  },
+  subsubsection={
+    name={},
+    number=\arabic{section}.\arabic{subsection}.\arabic{subsubsection},
+    format=\normalfont\songti\bfseries\normalsize,
+    aftername=\hspace{6bp},
+    indent=0pt,
+    beforeskip=3.9bp,
+    afterskip=0pt,
+    afterindent=true
+  }
+}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\makeatletter
+\renewcommand{\@dotsep}{0.8}
+\renewcommand{\@pnumwidth}{2em}
+\renewcommand{\@tocrmarg}{3em}
+\makeatother
+\numberwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\lstlistingname}{程序}
+\graphicspath{{figures/}}
+\DeclareCaptionFont{gmcm}{\normalfont\songti\normalsize}
+\captionsetup{font=gmcm,labelsep=space,skip=6bp}
+\captionsetup*[table]{position=top}
+\captionsetup*[subfigure]{font=gmcm}
+\setlength{\textfloatsep}{12bp}
+\setlength{\intextsep}{12bp}
+\setlength{\floatsep}{12bp}
+\renewcommand{\arraystretch}{1.2}
+\setlist{
+  topsep=3.9bp,
+  itemsep=0pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+\setlist[enumerate,1]{label=（\arabic*）,leftmargin=36bp,labelsep=6bp}
+\setlist[itemize,1]{leftmargin=24bp,labelsep=6bp}
+\setcitestyle{square,comma}
+\renewcommand{\bibfont}{\normalfont\songti\normalsize}
+\setlength{\bibsep}{3.9bp}
+\setlength{\bibhang}{24bp}
+\urlstyle{same}
+\lstset{
+  basicstyle=\ttfamily\fontsize{10.5bp}{13.65bp}\selectfont,
+  keywordstyle=\bfseries,
+  commentstyle=\normalfont\songti\fontsize{12bp}{15.6bp}\selectfont,
+  stringstyle=\ttfamily,
+  numbers=left,
+  numberstyle=\normalfont\fontsize{9bp}{12bp}\selectfont,
+  numbersep=8bp,
+  xleftmargin=24bp,
+  frame=lines,
+  framesep=6bp,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=4,
+  aboveskip=10bp,
+  belowskip=10bp,
+  captionpos=b
+}
+\AtBeginDocument{\normalfont\songti\normalsize}
+\renewcommand{\algorithmicrequire}{\textbf{输入：}}
+\renewcommand{\algorithmicensure}{\textbf{输出：}}
+\floatname{algorithm}{算法}
+\Crefname{table}{表}{表}
+\Crefname{figure}{图}{图}
+\Crefname{equation}{式}{式}
+\Crefname{algorithm}{算法}{算法}
+\ExplSyntaxOff
