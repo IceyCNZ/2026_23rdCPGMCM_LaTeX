@@ -1,6 +1,6 @@
 # 第二十三届研究生数学建模竞赛 LaTeX 模板 (带目录)
 
-![1vwroq1ceE](.\figures\1vwroq1ceE.png)
+![1vwroq1ceE](./figures/1vwroq1ceE.png)
 
 ![9F3TtcJ51L](.\figures\9F3TtcJ51L.png)
 
