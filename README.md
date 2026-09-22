@@ -2,11 +2,11 @@
 
 ![1vwroq1ceE](./figures/1vwroq1ceE.png)
 
-![9F3TtcJ51L](.\figures\9F3TtcJ51L.png)
+![9F3TtcJ51L](./figures/9F3TtcJ51L.png)
 
-![F5N4Wf8daS](D:.\figures\F5N4Wf8daS.png)
+![F5N4Wf8daS](./figures/F5N4Wf8daS.png)
 
-![8Ksjg1bBWb](.\figures\8Ksjg1bBWb.png)
+![8Ksjg1bBWb](./figures/8Ksjg1bBWb.png)
 
 从头编写的 XeLaTeX 模板。
 
